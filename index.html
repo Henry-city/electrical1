@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=375px, initial-scale=1.0"/>
+    <title>阻抗测量系统</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet"/>
+    <link href="https://ai-public.mastergo.com/gen_page/tailwind-custom-v2.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.mastergo.com/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="bg-gray-50 w-[375px] min-h-[762px]">
+    <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="flex items-center">
+                <img class="w-8 h-8 rounded-full" src="https://ai-public.mastergo.com/ai/img_res/2f92be61-e2cc-43b0-998c-57352af594b6.jpg" alt="用户头像"/>
+                <span class="ml-2 text-sm font-medium">张医生</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center text-sm">
+                    <i class="fas fa-wifi text-green-500"></i>
+                    <span class="ml-1">已连接</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <i class="fas fa-battery-three-quarters text-green-500"></i>
+                    <span class="ml-1">85%</span>
+                </div>
+                <button class="text-gray-600">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-20 px-4"><div class="bg-white rounded-lg shadow-sm p-4 mb-4"><h2 class="text-lg font-medium mb-4">用户管理</h2><div class="space-y-4"><div class="flex items-center justify-between p-3 bg-gray-50 rounded"><div class="flex items-center"><img class="w-10 h-10 rounded-full" src="https://ai-public.mastergo.com/ai/img_res/c2fe520d-9c07-402e-a429-13698b2a86ee.jpg" alt="用户头像"/><div class="ml-3"><div class="font-medium">张医生</div><div class="text-sm text-gray-600">主治医师</div></div></div><button class="text-custom">编辑</button></div><div class="grid grid-cols-1 gap-4"><div class="space-y-2"><label class="block text-sm text-gray-600">角色权限</label><select class="w-full border rounded px-3 py-2 text-sm"><option>管理员</option><option>医生</option><option>护士</option></select></div><div class="space-y-2"><label class="block text-sm text-gray-600">医院科室</label><input type="text" class="w-full border rounded px-3 py-2 text-sm" value="心内科"/></div><div class="space-y-2"><label class="block text-sm text-gray-600">工号</label><input type="text" class="w-full border rounded px-3 py-2 text-sm" value="DR20240001"/></div></div><div class="mt-4 space-y-4"><button class="w-full bg-custom text-white py-2 rounded-button">保存修改</button><button class="w-full border border-custom text-custom py-2 rounded-button">切换用户</button></div></div></div><div class="bg-white rounded-lg shadow-sm p-4 mb-4"><h2 class="text-lg font-medium mb-4">系统设置</h2><div class="space-y-4"><div class="flex items-center justify-between"><span class="text-sm">自动同步医院系统</span><label class="switch"><input type="checkbox" checked=""/><span class="slider round"></span></label></div><div class="flex items-center justify-between"><span class="text-sm">开机自动登录</span><label class="switch"><input type="checkbox"/><span class="slider round"></span></label></div><div class="flex items-center justify-between"><span class="text-sm">数据自动备份</span><label class="switch"><input type="checkbox" checked=""/><span class="slider round"></span></label></div></div></div></main>
+
+    <nav class="fixed bottom-0 w-full bg-white border-t">
+        <div class="grid grid-cols-4 gap-1">
+            <button class="flex flex-col items-center py-2 text-custom">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span class="text-xs">首页</span>
+            </button>
+            <button class="flex flex-col items-center py-2 text-gray-600">
+                <i class="fas fa-chart-line text-xl mb-1"></i>
+                <span class="text-xs">数据</span>
+            </button>
+            <button class="flex flex-col items-center py-2 text-gray-600">
+                <i class="fas fa-history text-xl mb-1"></i>
+                <span class="text-xs">历史</span>
+            </button>
+            <button class="flex flex-col items-center py-2 text-custom">
+                <i class="fas fa-user text-xl mb-1" style="color: var(--custom-color)"></i>
+                <span class="text-xs" style="color: var(--custom-color)">我的</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        const chart = echarts.init(document.getElementById('chart'));
+        const option = {
+            animation: false,
+            grid: {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 40
+            },
+            xAxis: {
+                type: 'category',
+                data: ['14:25', '14:26', '14:27', '14:28', '14:29', '14:30']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330],
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    color: '#4A90E2'
+                },
+                areaStyle: {
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0,
+                            color: 'rgba(74, 144, 226, 0.3)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(74, 144, 226, 0)'
+                        }]
+                    }
+                }
+            }]
+        };
+        chart.setOption(option);
+    </script>
+
+
+</body></html>
